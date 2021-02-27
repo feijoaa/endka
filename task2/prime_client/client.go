@@ -22,11 +22,18 @@ func main() {
 }
 
 func findAvg(c protoc.NumServiceClient) {
-	ctx:= context.Background()
+	ctx := context.Background()
 	arr := []int{1, 2, 3, 4}
 	req := &protoc.NumberRequest{Num: &protoc.Number{
 		Number: arr,
 	},
 	}
+	for i := 0; i < len(a); i++ {
+		sum += (arr[i])
+	}
+
+	// declaring a variable
+	// avg to find the average
+	avg := (int32(sum)) / (int32(n))
 
 }

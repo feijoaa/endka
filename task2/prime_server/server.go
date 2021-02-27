@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"google.golang.org/grpc"
 	"log"
+	"math"
 	"net"
 )
 
@@ -24,9 +25,23 @@ func (s *Server) Number(req *protoc.NumberRequest, stream protoc.NumService_Numb
 	fmt.Printf("GreetManyTimes function was invoked with %v \n", req)
 	number := req.GetNum().GetNumber()
 
-	numbers :=  []int32 {}
+	numbers := []int32{}
 
-	for number%2 == 0 {
-		numbers = append(numbers, 2)
-		number/=2
+	for i := 0; i < len(numbers); i++ {
+		result := &protoc.NumberResponse{Res: numbers[i]}
+		if err := stream.Send(result); err != nil {
+			log.Fatalf("Error: %v", err.Error())
+		}
+		sum := 0
+
+		for i := 0; i < len(a); i++ {
+			sum += (arr[i])
+		}
+
+		// declaring a variable
+		// avg to find the average
+		avg := (int32(sum)) / (int32(n))
 	}
+
+	return nil
+}
