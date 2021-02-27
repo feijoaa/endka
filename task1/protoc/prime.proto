@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package protoc;
+
+option go_package = ".;protoc";
+
+message Number {
+  int32 number = 1;
+}
+
+message NumberRequest {
+  Number num = 1;
+}
+
+message NumberResponse {
+  int32 res = 1;
+}
+
+service NumService {
+  rpc Number(NumberRequest) returns (stream NumberResponse) {};
+}
